@@ -8,10 +8,11 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define COLEMAK 0
-#define QWERTY  1
-#define LOWERED 2
-#define RAISED  3
+#define COLEMAK_01 0
+#define COLEMAK_02 1
+#define QWERTY     2
+#define LOWERED    3
+#define RAISED     4
 
 &mt {
   tapping-term-ms = <200>;
@@ -55,6 +56,20 @@
   keymap {
     compatible = "zmk,keymap";
 
+    colemak_mod_dh_with_homerow_mods {
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BSPC |
+// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
+// | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | ESC  |
+//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+      bindings = <
+        &kp ESC        &kp Q &kp W      &kp F      &kp P       &kp B          &kp J        &kp L       &kp U      &kp Y      &kp SEMI &kp BSPC
+        &mt CAPS TAB   &kp A &hm LGUI R &hm LALT S &hm LCTRL T &hm SHIFT G    &hm RSHIFT M &hm TCTRL N &hm RALT E &hm RGUI I &kp O    &kp SQT
+        &kp LSHIFT     &kp Z &kp X      &kp C      &kp D       &kp V          &kp K        &kp H       &kp COMMA  &kp DOT    &kp FSLH &kp ESC
+                                 &kp LGUI &to COLEMAK_02 &lt LOWERED SPACE    &lt RAISED BSPC &kp RET &mo RAISED
+        >;
+    };
+
     colemak_mod_dh {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BSPC |
@@ -62,10 +77,10 @@
 // | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
       bindings = <
-        &kp TAB   &kp Q      &kp W      &kp F       &kp P        &kp B    &kp J &kp L        &kp U       &kp Y      &kp SEMI   &kp BSPC
-        &kp LCTRL &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G    &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-        &kp LSHFT &kp Z      &kp X      &kp C       &kp D        &kp V    &kp K &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp ESC
-                                 &kp LGUI &to QWERTY &lt LOWERED SPACE    &kp RET &mo RAISED &kp RALT
+        &kp TAB   &kp Q &kp W &kp F &kp P &kp B    &kp J &kp L &kp U       &kp Y   &kp SEMI &kp BSPC
+        &kp LCTRL &KP A &kp R &kp S &kp T &kp G    &kp M &kp N &kp E       &kp I   &kp O    &kp SQT
+        &kp LSHFT &kp Z &kp X &kp C &kp D &kp V    &kp K &kp H &kp COMMA   &kp DOT &kp FSLH &kp ESC
+          &kp LGUI &to QWERTY &lt LOWERED SPACE    &lt RAISED BSPC &kp RET &kp RALT
         >;
     };
 
@@ -79,7 +94,7 @@
         &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U    &kp I     &kp O   &kp P    &kp BSPC
         &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J    &kp K     &kp L   &kp SEMI &kp SQT
         &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M    &kp COMMA &kp DOT &kp FSLH &kp ESC
-                       &kp LGUI &to COLEMAK &lt LOWERED SPACE    &kp RET &mo 3 &kp RALT
+                    &kp LGUI &to COLEMAK_01 &lt LOWERED SPACE    &kp RET &mo 3 &kp RALT
         >;
     };
 
