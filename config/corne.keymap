@@ -56,7 +56,7 @@
   keymap {
     compatible = "zmk,keymap";
 
-    colemak_mod_dh_with_homerow_mods {
+    colemak_mod_dh_01 { // Colemak mod DH (with homerow mods)
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BSPC |
 // | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
@@ -64,13 +64,13 @@
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
       bindings = <
         &kp ESC        &kp Q &kp W      &kp F      &kp P       &kp B          &kp J        &kp L       &kp U      &kp Y      &kp SEMI &kp BSPC
-        &mt CAPS TAB   &kp A &hm LGUI R &hm LALT S &hm LCTRL T &hm SHIFT G    &hm RSHIFT M &hm TCTRL N &hm RALT E &hm RGUI I &kp O    &kp SQT
+        &mt CAPS TAB   &kp A &hm LGUI R &hm LALT S &hm LCTRL T &hm SHIFT G    &hm RSHIFT M &hm RCTRL N &hm RALT E &hm RGUI I &kp O    &kp SQT
         &kp LSHIFT     &kp Z &kp X      &kp C      &kp D       &kp V          &kp K        &kp H       &kp COMMA  &kp DOT    &kp FSLH &kp ESC
                                  &kp LGUI &to COLEMAK_02 &lt LOWERED SPACE    &lt RAISED BSPC &kp RET &mo RAISED
         >;
     };
 
-    colemak_mod_dh {
+    colemak_mod_dh_02 { // Colemak mod DH (witout homerow mods)
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BSPC |
 // | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
