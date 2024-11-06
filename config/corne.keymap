@@ -65,13 +65,13 @@
       // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
       // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
       // -------------------------------------     -------------------------------------
-      //                   |FKEYS|LOWER| SPC |     | BSPC| RET |NMBRS|
-      //                   -------------------     --------------------
+      //                   |FKEYS|LOWER| SPC |     | BSPC|RAISE|NMBRS|
+      //                   -------------------     -------------------
       bindings = <
         &kp ESC  &kp Q &kp W      &kp F      &kp P       &kp B            &kp J        &kp L       &kp U      &kp Y      &kp SEMI &to CLMK1
         &kp TAB  &kp A &hm LGUI R &hm LALT S &hm LCTRL T &hm LSHIFT G     &hm RSHIFT M &hm RCTRL N &hm RALT E &hm RGUI I &kp O    &kp SQT
         &kp CAPS &kp Z &kp X      &kp C      &kp D       &kp V            &kp K        &kp H       &kp COMMA  &kp DOT    &kp FSLH &kp RET
-                                        &mo FKEYS &mo LOWER &kp SPACE     &kp BSPC &lt RAISE RET &mo NMBRS
+                                       &tog FKEYS &mo LOWER &kp SPACE     &kp BSPC &mo RAISE &tog NMBRS
         >;
     };
 
@@ -79,14 +79,14 @@
       // Colemak-mod-DH Keyboard Layout (witout homerow mods)
       // -------------------------------------     -------------------------------------
       // |     |     |     |     |     |     |     |     |     |     |     |     |QWRTY|
-      // |     |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |     |     |
+      // |     |     |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |     |     |
       // |     |     |     |     |     |     |     |     |     |     |     |     |     |
       // -------------------------------------     -------------------------------------
       //                   |     |     |     |     |     |     |     |
       //                   -------------------     -------------------
       bindings = <
         &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &to QWRTY
-        &trans &kp A  &kp R  &kp S  &kp T  &kp G      &kp M  &kp N  &kp E  &kp I  &kp O  &trans
+        &trans &trans &kp R  &kp S  &kp T  &kp G      &kp M  &kp N  &kp E  &kp I  &kp O  &trans
         &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
                              &trans &trans &trans     &trans &trans &trans
         >;
@@ -111,17 +111,17 @@
 
     lower_layer {
       // -------------------------------------     -------------------------------------
-      // | CAPS|  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  | ESC |
-      // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT| RET | RET |
+      // |     |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  |     |
+      // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT|     |     |
       // |     |     |     |     |     |     |     |     |     |     |     |     |     |
       // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     | DEL |     |     |
+      //                   |     |     |     |     | DEL |FKEYS|     |
       //                   -------------------     -------------------
       bindings = <
-        &kp CAPS &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0  &kp ESC
-        &trans   &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp RET &kp RET
-        &trans   &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans  &trans
-                               &trans &trans &trans     &kp DEL &mo NMBRS &trans
+        &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
+        &trans &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+        &trans &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans &trans
+                             &trans &trans &trans     &kp DEL &mo FKEYS &trans
         >;
     };
 
@@ -131,13 +131,13 @@
       // |     |     |     |     |     |     |     |  -  |  =  |  [  |  ]  |  \  |  `  |
       // |     |     |     |     |     |     |     |  _  |  +  |  {  |  }  |  |  |  ~  |
       // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |     |     |
+      //                   |     |NMBRS|     |     |     |     |     |
       //                   -------------------     -------------------
       bindings = <
-        &trans &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp C_SLEEP
+        &trans &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp K_SLEEP
         &trans &trans   &trans &trans   &trans   &trans        &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
         &trans &trans   &trans &trans   &trans   &trans        &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                                   &trans &mo FKEYS &trans     &trans &trans &trans
+                                   &trans &mo NMBRS &trans     &trans &trans &trans
         >;
     };
 
