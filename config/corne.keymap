@@ -7,8 +7,8 @@
 #define CLMK0 0
 #define CLMK1 1
 #define QWRTY 2
-#define LEFT  3
-#define RIGHT 4
+#define LEFTL 3
+#define RGHTL 4
 #define LOWER 5
 #define RAISE 6
 #define NMBRS 7
@@ -68,9 +68,9 @@ colemak_mod_dh_01 {
   //                   |FKEYS|LOWER| SPC |     | BSPC|RAISE|NMBRS|
   //                   -------------------     -------------------
   bindings = <
-    &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J      &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
-    &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RIGHT G     &lt LEFT M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-    &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K      &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
+    &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
+    &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
+    &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
                                    &tog FKEYS &mo LOWER &kp SPACE           &kp BSPC &mo RAISE &tog NMBRS
     >;
 };
@@ -134,14 +134,14 @@ left_layer {
 right_layer {
   // -------------------------------------     -------------------------------------
   // |     |     |     |     |     |     |     |     |  F1 |  F2 | F3  | F4  | F5  |
-  // |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  |  |  ~  |
+  // |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  \  |  ~  |
   // |     |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  5  |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
     &trans &trans &trans &trans &trans &trans     &trans    &kp F1   &kp F2   &kp F3   &kp F4   &kp F5
-    &trans &trans &trans &trans &trans &trans     &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp PIPE &kp TILDE
+    &trans &trans &trans &trans &trans &trans     &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp BSLH &kp TILDE
     &trans &trans &trans &trans &trans &trans     &trans    &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
                          &trans &trans &trans     &trans &trans &trans
     >;
