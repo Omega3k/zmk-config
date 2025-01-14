@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+// * Corne Keymap Config
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -11,10 +7,12 @@
 #define CLMK0 0
 #define CLMK1 1
 #define QWRTY 2
-#define LOWER 3
-#define RAISE 4
-#define NMBRS 5
-#define FKEYS 6
+#define LEFT  3
+#define RIGHT 4
+#define LOWER 5
+#define RAISE 6
+#define NMBRS 7
+#define FKEYS 8
 
 &mt {
   tapping-term-ms = <200>;
@@ -27,166 +25,216 @@
 / {
   behaviors {
   hm: homerow_mods {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <250>;
-      quick-tap-ms = <0>;
-      flavor = "tap-preferred";
-      bindings = <&kp>, <&kp>;
+      compatible            = "zmk,behavior-hold-tap";
+      #binding-cells        = <2>;
+      tapping-term-ms       = <200>;
+      quick-tap-ms          = <0>;
+      flavor                = "tap-preferred";
+      bindings              = <&kp>, <&kp>;
     };
 
   bhm: balanced_homerow_mods {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      quick-tap-ms = <0>;
-      flavor = "balanced";
-      bindings = <&kp>, <&kp>;
+      compatible            = "zmk,behavior-hold-tap";
+      #binding-cells        = <2>;
+      tapping-term-ms       = <200>;
+      quick-tap-ms          = <0>;
+      flavor                = "balanced";
+      bindings              = <&kp>, <&kp>;
     };
 
   rpi: require_prior_idle {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      flavor = "tap-preferred";
-      tapping-term-ms = <200>;
-      quick-tap-ms = <200>;
-	    require-prior-idle-ms = <125>;
-      bindings = <&kp>, <&kp>;
+      compatible            = "zmk,behavior-hold-tap";
+      #binding-cells        = <2>;
+      flavor                = "tap-preferred";
+      tapping-term-ms       = <200>;
+      quick-tap-ms          = <200>;
+      require-prior-idle-ms = <125>;
+      bindings              = <&kp>, <&kp>;
     };
   };
 
   keymap {
     compatible = "zmk,keymap";
 
-    colemak_mod_dh_01 {
-      // Colemak-mod-DH Keyboard Layout (with homerow mods)
-      // -------------------------------------     -------------------------------------
-      // | ESC |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
-      // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
-      // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
-      // -------------------------------------     -------------------------------------
-      //                   |FKEYS|LOWER| SPC |     | BSPC|RAISE|NMBRS|
-      //                   -------------------     -------------------
-      bindings = <
-        &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B     &kp J &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
-        &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-        &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V     &kp K &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                       &tog FKEYS &mo LOWER &kp SPACE     &kp BSPC &mo RAISE &tog NMBRS
-        >;
-    };
+// ** Colemak Layers
 
-    colemak_mod_dh_02 {
-      // Colemak-mod-DH Keyboard Layout (witout homerow mods)
-      // -------------------------------------     -------------------------------------
-      // |     |     |     |     |     |     |     |     |     |     |     |     |QWRTY|
-      // |     |     |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |     |     |
-      // |     |     |     |     |     |     |     |     |     |     |     |     |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |     |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &to QWRTY
-        &trans &trans &kp R  &kp S  &kp T  &kp G      &kp M  &kp N  &kp E  &kp I  &kp O  &trans
-        &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-                             &trans &trans &trans     &trans &trans &trans
-        >;
-    };
+colemak_mod_dh_01 {
+  // Colemak-mod-DH Keyboard Layout (with homerow mods)
+  // -------------------------------------     -------------------------------------
+  // | ESC |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
+  // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
+  // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
+  // -------------------------------------     -------------------------------------
+  //                   |FKEYS|LOWER| SPC |     | BSPC|RAISE|NMBRS|
+  //                   -------------------     -------------------
+  bindings = <
+    &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J      &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
+    &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RIGHT G     &lt LEFT M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
+    &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K      &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
+                                   &tog FKEYS &mo LOWER &kp SPACE           &kp BSPC &mo RAISE &tog NMBRS
+    >;
+};
 
-    qwerty {
-      // QWERTY Keybord Layout
-      // -------------------------------------     -------------------------------------
-      // |     |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |CLMK0|
-      // |     |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |     |
-      // |     |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |     |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &kp Q &kp W &kp E &kp R &kp T     &kp Y &kp U    &kp I     &kp O   &kp P    &to CLMK0
-        &trans &kp A &kp S &kp D &kp F &kp G     &kp H &kp J    &kp K     &kp L   &kp SEMI &trans
-        &trans &kp Z &kp X &kp C &kp V &kp B     &kp N &kp M    &kp COMMA &kp DOT &kp FSLH &trans
-                        &trans &trans &trans     &trans &trans &trans
-        >;
-    };
+colemak_mod_dh_02 {
+  // Colemak-mod-DH Keyboard Layout (witout homerow mods)
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |     |     |     |     |     |QWRTY|
+  // |     |     |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &to QWRTY
+    &trans &trans &kp R  &kp S  &kp T  &kp G      &kp M  &kp N  &kp E  &kp I  &kp O  &trans
+    &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+                         &trans &trans &trans     &trans &trans &trans
+    >;
+};
 
-    lower_layer {
-      // -------------------------------------     -------------------------------------
-      // |     |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  |     |
-      // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT|     |     |
-      // |     |     |     |     |     |     |     |     |     |     |     |     |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     | DEL |FKEYS|     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
-        &trans &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-        &trans &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans &trans
-                             &trans &trans &trans     &kp DEL &mo FKEYS &trans
-        >;
-    };
+// ** Qwerty Layer
 
-    raise_layer {
-      // -------------------------------------     -------------------------------------
-      // |     |  !  |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |SLEEP|
-      // |     |     |  [  |  {  |  (  |  _  |     |  -  |  )  |  }  |  ]  |  \  |  `  |
-      // |     |     |     |     |  =  |     |     |  _  |  +  |  {  |  }  |  |  |  ~  |
-      // -------------------------------------     -------------------------------------
-      //                   |     |NMBRS|     |     |     |     |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &kp EXCL &kp AT   &kp HASH &kp DLLR  &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp K_SLEEP
-        &trans &trans   &kp LBKT &kp LBRC &kp LPAR  &kp UNDER     &kp MINUS &kp RPAR  &kp RBRC  &kp RBKT &kp BSLH &kp GRAVE
-        &trans &trans   &trans   &trans   &kp EQUAL &trans        &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                                      &trans &mo NMBRS &trans     &trans &trans &trans
-        >;
-    };
+qwerty {
+  // QWERTY Keybord Layout
+  // -------------------------------------     -------------------------------------
+  // |     |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |CLMK0|
+  // |     |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |     |
+  // |     |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &kp Q &kp W &kp E &kp R &kp T     &kp Y &kp U    &kp I     &kp O   &kp P    &to CLMK0
+    &trans &kp A &kp S &kp D &kp F &kp G     &kp H &kp J    &kp K     &kp L   &kp SEMI &trans
+    &trans &kp Z &kp X &kp C &kp V &kp B     &kp N &kp M    &kp COMMA &kp DOT &kp FSLH &trans
+                    &trans &trans &trans     &trans &trans &trans
+    >;
+};
 
-    numbers {
-      // -------------------------------------     -------------------------------------
-      // |BTCLR| BT5 | BT4 | BT3 | BT2 | BT1 |     |  +  |  7  |  8  |  9  |  /  |     |
-      // |     |     |     |     |     |     |     |  -  |  4  |  5  |  6  |  *  |  =  |
-      // |     |     |     |     |     |     |     |  .  |  1  |  2  |  3  |  ,  |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |  0  |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &bt BT_CLR &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp SLASH &trans
-        &trans &trans &trans &trans &trans &trans                                       &kp MINUS &kp N4 &kp N5 &kp N6 &kp STAR  &kp EQUAL
-        &trans &trans &trans &trans &trans &trans                                       &kp DOT   &kp N1 &kp N2 &kp N3 &kp COMMA &trans
-                             &trans &trans &trans                                       &trans &kp N0 &trans
-        >;
-    };
+// ** Left Layer
 
-    f_keys {
-      // -------------------------------------     -------------------------------------
-      // |     |     |     |     |     |     |     |     |  F7 |  F8 |  F9 | F10 |     |
-      // |     |     |     |     |     |     |     |     |  F4 |  F5 |  F6 | F11 |     |
-      // |     |     |     |     |     |     |     |     |  F1 |  F2 |  F3 | F12 |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |     |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &trans &trans &trans &trans &trans     &trans &kp F7 &kp F8 &kp F9 &kp F10 &trans
-        &trans &trans &trans &trans &trans &trans     &trans &kp F4 &kp F5 &kp F6 &kp F11 &trans
-        &trans &trans &trans &trans &trans &trans     &trans &kp F1 &kp F2 &kp F3 &kp F12 &trans
-                             &trans &trans &trans     &trans &trans &trans
-        >;
-    };
+left_layer {
+  // -------------------------------------     -------------------------------------
+  // | F10 | F9  |  F8 | F7  | F6  |     |     |     |     |     |     |     |     |
+  // | F12 | F11 |  [  |  {  |  (  |  _  |     |     |     |     |     |     |     |
+  // |  0  |  9  |  8  |  7  |  6  |     |     |     |     |     |     |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &kp F10 &kp F9  &kp F8   &kp F7   &kp F6   &trans        &trans &trans &trans &trans &trans &trans
+    &kp F12 &kp F11 &kp LBKT &kp LBRC &kp LPAR &kp UNDER     &trans &trans &trans &trans &trans &trans
+    &kp N0  &kp N9  &kp N8   &kp N7   &kp N6   &trans        &trans &trans &trans &trans &trans &trans
+                                    &trans &trans &trans     &trans &trans &trans
+    >;
+};
 
-    blank_layer {
-      // -------------------------------------     -------------------------------------
-      // |     |     |     |     |     |     |     |     |     |     |     |     |     |
-      // |     |     |     |     |     |     |     |     |     |     |     |     |     |
-      // |     |     |     |     |     |     |     |     |     |     |     |     |     |
-      // -------------------------------------     -------------------------------------
-      //                   |     |     |     |     |     |     |     |
-      //                   -------------------     -------------------
-      bindings = <
-        &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-                             &trans &trans &trans     &trans &trans &trans
-        >;
-    };
-  };
+// ** Right Layer
+
+right_layer {
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |     |  F1 |  F2 | F3  | F4  | F5  |
+  // |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  |  |  ~  |
+  // |     |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  5  |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &trans &trans &trans &trans &trans     &trans    &kp F1   &kp F2   &kp F3   &kp F4   &kp F5
+    &trans &trans &trans &trans &trans &trans     &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp PIPE &kp TILDE
+    &trans &trans &trans &trans &trans &trans     &trans    &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
+                         &trans &trans &trans     &trans &trans &trans
+    >;
+};
+
+// ** Lower Layer
+
+lower_layer {
+  // -------------------------------------     -------------------------------------
+  // |     |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  |     |
+  // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT|     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     | DEL |FKEYS|     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
+    &trans &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+    &trans &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans &trans
+                         &trans &trans &trans     &kp DEL &mo FKEYS &trans
+    >;
+};
+
+// ** Raise Layer
+
+raise_layer {
+  // -------------------------------------     -------------------------------------
+  // |     |  !  |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |SLEEP|
+  // |     |     |  [  |  {  |  (  |  -  |     |  _  |  )  |  }  |  ]  |  \  |  `  |
+  // |     |     |     |     |  =  |     |     |  _  |  +  |  {  |  }  |  |  |  ~  |
+  // -------------------------------------     -------------------------------------
+  //                   |     |NMBRS|     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &kp EXCL &kp AT   &kp HASH &kp DLLR  &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp K_SLEEP
+    &trans &trans   &kp LBKT &kp LBRC &kp LPAR  &kp MINUS     &kp UNDER &kp RPAR  &kp RBRC  &kp RBKT &kp BSLH &kp GRAVE
+    &trans &trans   &trans   &trans   &kp EQUAL &trans        &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+                                  &trans &mo NMBRS &trans     &trans &trans &trans
+    >;
+};
+
+// ** Numbers Layer
+
+numbers {
+  // -------------------------------------     -------------------------------------
+  // |BTCLR| BT5 | BT4 | BT3 | BT2 | BT1 |     |  +  |  7  |  8  |  9  |  /  |     |
+  // |     |     |     |     |     |     |     |  -  |  4  |  5  |  6  |  *  |  =  |
+  // |     |     |     |     |     |     |     |  .  |  1  |  2  |  3  |  ,  |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |  0  |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &bt BT_CLR &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp SLASH &trans
+    &trans &trans &trans &trans &trans &trans                                       &kp MINUS &kp N4 &kp N5 &kp N6 &kp STAR  &kp EQUAL
+    &trans &trans &trans &trans &trans &trans                                       &kp DOT   &kp N1 &kp N2 &kp N3 &kp COMMA &trans
+                         &trans &trans &trans                                       &trans &kp N0 &trans
+    >;
+};
+
+// ** Function Keys Layer
+
+f_keys {
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |     |  F7 |  F8 |  F9 | F10 |     |
+  // |     |     |     |     |     |     |     |     |  F4 |  F5 |  F6 | F11 |     |
+  // |     |     |     |     |     |     |     |     |  F1 |  F2 |  F3 | F12 |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &trans &trans &trans &trans &trans     &trans &kp F7 &kp F8 &kp F9 &kp F10 &trans
+    &trans &trans &trans &trans &trans &trans     &trans &kp F4 &kp F5 &kp F6 &kp F11 &trans
+    &trans &trans &trans &trans &trans &trans     &trans &kp F1 &kp F2 &kp F3 &kp F12 &trans
+                         &trans &trans &trans     &trans &trans &trans
+    >;
+};
+
+// ** Blank Layer
+
+blank_layer {
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+    &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+                         &trans &trans &trans     &trans &trans &trans
+    >;
+};
+};
 };
