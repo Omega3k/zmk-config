@@ -65,18 +65,18 @@ colemak_mod_dh_01 {
   // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
   // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
   // -------------------------------------     -------------------------------------
-  //                   |FKEYS|LOWER| SPC |     | BSPC|RAISE|NMBRS|
+  //                   |NMBRS|LOWER| SPC |     | BSPC| RET |NMBRS|
   //                   -------------------     -------------------
   bindings = <
     &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
     &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                   &tog FKEYS &mo LOWER &kp SPACE           &kp BSPC &mo RAISE &tog NMBRS
+                                          &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &kp RET &tog NMBRS
     >;
 };
 
 colemak_mod_dh_02 {
-  // Colemak-mod-DH Keyboard Layout (witout homerow mods)
+  // Colemak-mod-DH Keyboard Layout (without homerow mods)
   // -------------------------------------     -------------------------------------
   // |     |     |     |     |     |     |     |     |     |     |     |     |QWRTY|
   // |     |     |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |     |     |
@@ -115,16 +115,16 @@ qwerty {
 
 left_layer {
   // -------------------------------------     -------------------------------------
-  // | F10 | F9  |  F8 | F7  | F6  |     |     |     |     |     |     |     |     |
-  // | F12 | F11 |  [  |  {  |  (  |  _  |     |     |     |     |     |     |     |
-  // |  0  |  9  |  8  |  7  |  6  |     |     |     |     |     |     |     |     |
+  // | F12 | F11 | F10 | F9  | F8  | F7  |     |     |     |     |     |     |     |
+  // |     |     |  [  |  {  |  (  |  =  |     |     |     |     |     |     |     |
+  // |     |     |  0  |  9  |  8  |  7  |     |     |     |     |     |     |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &kp F10 &kp F9  &kp F8   &kp F7   &kp F6   &trans        &trans &trans &trans &trans &trans &trans
-    &kp F12 &kp F11 &kp LBKT &kp LBRC &kp LPAR &kp UNDER     &trans &trans &trans &trans &trans &trans
-    &kp N0  &kp N9  &kp N8   &kp N7   &kp N6   &trans        &trans &trans &trans &trans &trans &trans
+    &kp F12 &kp F11 &kp F10  &kp F9   &kp F8   &kp F7        &trans &trans &trans &trans &trans &trans
+    &trans  &trans  &kp LBKT &kp LBRC &kp LPAR &kp EQUAL     &trans &trans &trans &trans &trans &trans
+    &trans  &trans  &kp N0   &kp N9   &kp N8   &kp N7        &trans &trans &trans &trans &trans &trans
                                     &trans &trans &trans     &trans &trans &trans
     >;
 };
@@ -133,16 +133,16 @@ left_layer {
 
 right_layer {
   // -------------------------------------     -------------------------------------
-  // |     |     |     |     |     |     |     |     |  F1 |  F2 | F3  | F4  | F5  |
+  // |     |     |     |     |     |     |     |  F1 |  F2 | F3  | F4  | F5  |  F6 |
   // |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  \  |  ~  |
-  // |     |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  5  |
+  // |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  5  |  6  |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans &trans &trans &trans &trans     &trans    &kp F1   &kp F2   &kp F3   &kp F4   &kp F5
+    &trans &trans &trans &trans &trans &trans     &kp F1    &kp F2   &kp F3   &kp F4   &kp F5   &kp F6
     &trans &trans &trans &trans &trans &trans     &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp BSLH &kp TILDE
-    &trans &trans &trans &trans &trans &trans     &trans    &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
+    &trans &trans &trans &trans &trans &trans     &kp N1    &kp N2   &kp N3   &kp N4   &kp N5   &kp N6
                          &trans &trans &trans     &trans &trans &trans
     >;
 };
@@ -188,15 +188,15 @@ raise_layer {
 numbers {
   // -------------------------------------     -------------------------------------
   // |BTCLR| BT5 | BT4 | BT3 | BT2 | BT1 |     |  +  |  7  |  8  |  9  |  /  |     |
-  // |     |     |     |     |     |     |     |  -  |  4  |  5  |  6  |  *  |  =  |
-  // |     |     |     |     |     |     |     |  .  |  1  |  2  |  3  |  ,  |     |
+  // |     |     |     |     |     |     |     |  -  |  4  |  5  |  6  |  .  |  =  |
+  // |     |     |     |     |     |     |     |  *  |  1  |  2  |  3  |  ,  |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |  0  |     |
   //                   -------------------     -------------------
   bindings = <
     &bt BT_CLR &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp SLASH &trans
-    &trans &trans &trans &trans &trans &trans                                       &kp MINUS &kp N4 &kp N5 &kp N6 &kp STAR  &kp EQUAL
-    &trans &trans &trans &trans &trans &trans                                       &kp DOT   &kp N1 &kp N2 &kp N3 &kp COMMA &trans
+    &trans &trans &trans &trans &trans &trans                                       &kp MINUS &kp N4 &kp N5 &kp N6 &kp DOT   &kp EQUAL
+    &trans &trans &trans &trans &trans &trans                                       &kp STAR  &kp N1 &kp N2 &kp N3 &kp COMMA &trans
                          &trans &trans &trans                                       &trans &kp N0 &trans
     >;
 };
