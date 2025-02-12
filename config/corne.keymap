@@ -77,6 +77,8 @@
 
 // ** Colemak Layers
 
+// *** Colemak Mod DH (with homerow mods)
+
 colemak_mod_dh_01 {
   // Colemak-mod-DH Keyboard Layout (with homerow mods)
   // -------------------------------------     -------------------------------------
@@ -93,6 +95,8 @@ colemak_mod_dh_01 {
                                           &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &kp RET &tog NMBRS
     >;
 };
+
+// *** Colemak Mod DH (without homerow mods)
 
 colemak_mod_dh_02 {
   // Colemak-mod-DH Keyboard Layout (without homerow mods)
@@ -135,16 +139,16 @@ qwerty {
 left_layer {
   // -------------------------------------     -------------------------------------
   // | F12 | F11 | F10 | F9  | F8  | F7  |     |     |     |     |     |     |     |
-  // |     |     |  [  |  {  |  (  |  =  |     |     |     |     |     |     |     |
+  // |     |  [  |  {  |  (  |  _  |     |     |     |     |     |     |     |     |
   // |     |     |  0  |  9  |  8  |  7  |     |     |     |     |     |     |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &kp F12 &kp F11 &kp F10  &kp F9   &kp F8   &kp F7        &trans &trans &trans &trans &trans &trans
-    &trans  &trans  &kp LBKT &kp LBRC &kp LPAR &kp EQUAL     &trans &trans &trans &trans &trans &trans
-    &trans  &trans  &kp N0   &kp N9   &kp N8   &kp N7        &trans &trans &trans &trans &trans &trans
-                                    &trans &trans &trans     &trans &trans &trans
+    &kp F12 &kp F11  &kp F10  &kp F9   &kp F8    &kp F7     &trans &trans &trans &trans &trans &trans
+    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &trans &trans &trans &trans &trans &trans
+    &trans  &trans   &kp N0   &kp N9   &kp N8    &kp N7     &trans &trans &trans &trans &trans &trans
+                                   &trans &trans &trans     &trans &trans &trans
     >;
 };
 
@@ -153,15 +157,15 @@ left_layer {
 right_layer {
   // -------------------------------------     -------------------------------------
   // |     |     |     |     |     |     |     |  F1 |  F2 | F3  | F4  | F5  |  F6 |
-  // |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  \  |  ~  |
-  // |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  5  |  6  |
+  // |     |     |     |     |     |     |     |     |  -  |  )  |  }  |  ]  |  `  |
+  // |     |     |     |     |     |     |     |  1  |  2  |  3  |  4  |  \  |  ~  |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans &trans &trans &trans &trans     &kp F1    &kp F2   &kp F3   &kp F4   &kp F5   &kp F6
-    &trans &trans &trans &trans &trans &trans     &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp BSLH &kp TILDE
-    &trans &trans &trans &trans &trans &trans     &kp N1    &kp N2   &kp N3   &kp N4   &kp N5   &kp N6
+    &trans &trans &trans &trans &trans &trans     &kp F1 &kp F2    &kp F3   &kp F4   &kp F5   &kp F6
+    &trans &trans &trans &trans &trans &trans     &trans &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
+    &trans &trans &trans &trans &trans &trans     &kp N1 &kp N2    &kp N3   &kp N4   &kp BSLH &kp TILDE
                          &trans &trans &trans     &trans &trans &trans
     >;
 };
@@ -170,14 +174,14 @@ right_layer {
 
 lower_layer {
   // -------------------------------------     -------------------------------------
-  // |     |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  |     |
+  // |     |     |  0  |  9  |  8  |  7  |     |  1  |  2  |  3  |  4  |  5  |  6  |
   // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT|     |     |
   // |     |     |     |     |     |     |     |     |     |     |     |     |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     | DEL |FKEYS|     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &trans
+    &trans &trans &kp N0 &kp N9 &kp N8 &kp N7     &kp N1   &kp N2   &kp N3 &kp N4    &kp N5 &kp N6
     &trans &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
     &trans &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans &trans
                          &trans &trans &trans     &kp DEL &mo FKEYS &trans
