@@ -22,6 +22,16 @@
   tapping-term-ms = <250>;
 };
 
+&sl {
+  release-after-ms = <2000>;
+};
+
+&sk {
+  release-after-ms = <2000>;
+  // quick-release;
+  // /delete-property/ ignore-modifiers;
+};
+
 / {
   behaviors {
   hm: homerow_mods {
@@ -175,16 +185,16 @@ right_layer {
 lower_layer {
   // -------------------------------------     -------------------------------------
   // |     |     |  0  |  9  |  8  |  7  |     |  1  |  2  |  3  |  4  |  5  |  6  |
-  // |     |     |     |     |     |     |     | LEFT| DOWN|  UP |RIGHT|     |     |
-  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // |     | GUI | ALT | CTRL|SHIFT|     |     | LEFT| DOWN|  UP |RIGHT| HOME|PG_UP|
+  // |     |     |     |     |     |     |     |     |K_APP|     |     | END |PG_DN|
   // -------------------------------------     -------------------------------------
-  //                   |     |     |     |     | DEL |FKEYS|     |
+  //                   |     |     |     |     | DEL |RAISE|     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans &kp N0 &kp N9 &kp N8 &kp N7     &kp N1   &kp N2   &kp N3 &kp N4    &kp N5 &kp N6
-    &trans &trans &trans &trans &trans &trans     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-    &trans &trans &trans &trans &trans &trans     &trans   &trans   &trans &trans    &trans &trans
-                         &trans &trans &trans     &kp DEL &mo FKEYS &trans
+    &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &kp N1   &kp N2    &kp N3 &kp N4    &kp N5   &kp N6
+    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp LEFT &kp DOWN  &kp UP &kp RIGHT &kp HOME &kp PG_UP
+    &trans &trans   &trans   &trans    &trans     &trans     &trans   &kp K_APP &trans &trans    &kp END  &kp PG_DN
+                                    &trans &trans &trans     &kp DEL &sl RAISE &trans
     >;
 };
 
@@ -192,17 +202,17 @@ lower_layer {
 
 raise_layer {
   // -------------------------------------     -------------------------------------
-  // |     |  !  |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |SLEEP|
-  // |     |     |  [  |  {  |  (  |  -  |     |  _  |  )  |  }  |  ]  |  \  |  `  |
-  // |     |     |     |     |  =  |     |     |  _  |  +  |  {  |  }  |  |  |  ~  |
+  // | F12 | F11 | F10 | F9  | F8  | F7  |     |  F1 |  F2 | F3  | F4  | F5  |  F6 |
+  // |     |  [  |  {  |  (  |  _  |     |     |     |  -  |  )  |  }  |  ]  |  `  |
+  // |     |     |     |     |     |     |     |     |     |     |     |  \  |  ~  |
   // -------------------------------------     -------------------------------------
   //                   |     |NMBRS|     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &kp EXCL &kp AT   &kp HASH &kp DLLR  &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp K_SLEEP
-    &trans &trans   &kp LBKT &kp LBRC &kp LPAR  &kp MINUS     &kp UNDER &kp RPAR  &kp RBRC  &kp RBKT &kp BSLH &kp GRAVE
-    &trans &trans   &trans   &trans   &kp EQUAL &trans        &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                                  &trans &mo NMBRS &trans     &trans &trans &trans
+    &kp F12 &kp F11  &kp F10  &kp F9   &kp F8    &kp F7     &kp F1 &kp F2    &kp F3   &kp F4   &kp F5   &kp F6   
+    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &trans &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
+    &trans  &trans   &trans   &trans   &trans    &trans     &trans &trans    &trans   &trans   &kp BSLH &kp TILDE
+                                &trans &mo NMBRS &trans     &trans &trans &trans
     >;
 };
 
