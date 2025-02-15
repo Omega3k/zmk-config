@@ -14,17 +14,25 @@
 #define NMBRS 7
 #define FKEYS 8
 
+// Mod Tap
+
 &mt {
   tapping-term-ms = <250>;
 };
+
+// Layer Tap
 
 &lt {
   tapping-term-ms = <250>;
 };
 
+// Sticky Layer
+
 &sl {
   release-after-ms = <2000>;
 };
+
+// Sticky Key
 
 &sk {
   release-after-ms = <2000>;
@@ -102,7 +110,7 @@ colemak_mod_dh_01 {
     &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
     &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                          &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &kp RET &tog NMBRS
+                                          &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &lt RAISE RET &tog NMBRS
     >;
 };
 
