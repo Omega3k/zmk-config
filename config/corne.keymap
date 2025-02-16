@@ -110,7 +110,7 @@ colemak_mod_dh_01 {
     &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
     &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                          &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &lt RAISE RET &tog NMBRS
+                                          &mo NMBRS &kp SPACE &mo LOWER     &lt RAISE RET &kp BSPC &tog NMBRS
     >;
 };
 
@@ -202,7 +202,7 @@ lower_layer {
     &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &kp N1   &kp N2    &kp N3 &kp N4    &kp N5   &kp N6
     &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp LEFT &kp DOWN  &kp UP &kp RIGHT &kp HOME &kp PG_UP
     &trans &trans   &trans   &trans    &trans     &trans     &trans   &kp K_APP &trans &trans    &kp END  &kp PG_DN
-                                    &trans &trans &trans     &kp DEL &sl RAISE &trans
+                                    &trans &trans &trans     &sl RAISE &kp DEL &trans
     >;
 };
 
