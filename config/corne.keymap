@@ -110,7 +110,7 @@ colemak_mod_dh_01 {
     &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
     &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                          &mo NMBRS &mo LOWER &kp SPACE     &kp BSPC &mo RAISE &tog NMBRS
+                                  &lt NMBRS ESC &lt LOWER SPACE &kp TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
 
@@ -211,15 +211,15 @@ lower_layer {
 raise_layer {
   // -------------------------------------     -------------------------------------
   // | F12 | F11 | F10 | F9  | F8  | F7  |     |  F1 |  F2 | F3  | F4  | F5  |  F6 |
-  // |     |  [  |  {  |  (  |  _  |     |     |     |  -  |  )  |  }  |  ]  |  `  |
-  // |     |     |     |     |     |     |     |     |     |     |     |  \  |  ~  |
+  // |     |  [  |  {  |  (  |  _  |     |     |  +  |  -  |  )  |  }  |  ]  |  `  |
+  // |     |     |     |     |     |     |     |     |     |     |     |  \  |     |
   // -------------------------------------     -------------------------------------
-  //                   |     |NMBRS|     |     |     |     |     |
+  //                   |     |NMBRS| RET |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
     &kp F12 &kp F11  &kp F10  &kp F9   &kp F8    &kp F7     &kp F1 &kp F2    &kp F3   &kp F4   &kp F5   &kp F6   
-    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &trans &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
-    &trans  &trans   &trans   &trans   &trans    &trans     &trans &trans    &trans   &trans   &kp BSLH &kp TILDE
+    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &kp PLUS &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
+    &trans  &trans   &trans   &trans   &trans    &trans     &trans &trans    &trans   &trans   &kp BSLH &trans
                                &trans &mo NMBRS &kp RET     &trans &trans &trans
     >;
 };
