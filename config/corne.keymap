@@ -66,19 +66,19 @@
   combos {
     compatible = "zmk,combos";
 
-    combo_left_shift {
-      timeout-ms    = <50>;
-      key-positions = <15 16>;
-      bindings      = <&kp LSHIFT>;
-      // slow-release;
-    };
+    // combo_left_shift {
+    //   timeout-ms    = <50>;
+    //   key-positions = <15 16>;
+    //   bindings      = <&kp LSHIFT>;
+    //   // slow-release;
+    // };
 
-    combo_right_shift {
-      timeout-ms    = <50>;
-      key-positions = <19 20>;
-      bindings      = <&kp RSHIFT>;
-      // slow-release;
-    };
+    // combo_right_shift {
+    //   timeout-ms    = <50>;
+    //   key-positions = <19 20>;
+    //   bindings      = <&kp RSHIFT>;
+    //   // slow-release;
+    // };
 
     // combo_esc {
     //   timeout-ms    = <50>;
