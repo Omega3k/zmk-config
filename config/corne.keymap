@@ -65,69 +65,95 @@
 
   combos {
     compatible = "zmk,combos";
-    combo_esc {
-      timeout-ms    = <50>;
-      key-positions = <0 1>;
-      bindings      = <&kp ESC>;
-    };
-    combo_left {
-      timeout-ms    = <50>;
-      key-positions = <7 8>;
-      bindings      = <&mo LEFTL>;
-    };
-    combo_right {
-      timeout-ms    = <50>;
-      key-positions = <3 4>;
-      bindings      = <&mo RGHTL>;
-    };
+
     combo_left_shift {
       timeout-ms    = <50>;
-      key-positions = <16 37>;
+      key-positions = <15 16>;
       bindings      = <&kp LSHIFT>;
-      slow-release;
+      // slow-release;
     };
-    combo_left_ctrl {
-      timeout-ms    = <50>;
-      key-positions = <15 37>;
-      bindings      = <&kp LCTRL>;
-      slow-release;
-    };
-    combo_left_alt {
-      timeout-ms    = <50>;
-      key-positions = <14 37>;
-      bindings      = <&kp LALT>;
-      slow-release;
-    };
-    combo_left_gui {
-      timeout-ms    = <50>;
-      key-positions = <13 37>;
-      bindings      = <&kp LGUI>;
-      slow-release;
-    };
+
     combo_right_shift {
       timeout-ms    = <50>;
-      key-positions = <19 40>;
+      key-positions = <19 20>;
       bindings      = <&kp RSHIFT>;
-      slow-release;
+      // slow-release;
     };
-    combo_right_ctrl {
-      timeout-ms    = <50>;
-      key-positions = <18 40>;
-      bindings      = <&kp RCTRL>;
-      slow-release;
-    };
-    combo_right_alt {
-      timeout-ms    = <50>;
-      key-positions = <17 40>;
-      bindings      = <&kp RALT>;
-      slow-release;
-    };
-    combo_right_gui {
-      timeout-ms    = <50>;
-      key-positions = <16 40>;
-      bindings      = <&kp RGUI>;
-      slow-release;
-    };
+
+    // combo_esc {
+    //   timeout-ms    = <50>;
+    //   key-positions = <0 1>;
+    //   bindings      = <&kp ESC>;
+    // };
+
+    // combo_left {
+    //   timeout-ms    = <50>;
+    //   key-positions = <7 8>;
+    //   bindings      = <&mo LEFTL>;
+    // };
+
+    // combo_right {
+    //   timeout-ms    = <50>;
+    //   key-positions = <3 4>;
+    //   bindings      = <&mo RGHTL>;
+    // };
+
+    // combo_left_shift {
+    //   timeout-ms    = <50>;
+    //   key-positions = <16 37>;
+    //   bindings      = <&kp LSHIFT>;
+    //   slow-release;
+    // };
+
+    // combo_left_ctrl {
+    //   timeout-ms    = <50>;
+    //   key-positions = <15 37>;
+    //   bindings      = <&kp LCTRL>;
+    //   slow-release;
+    // };
+
+    // combo_left_alt {
+    //   timeout-ms    = <50>;
+    //   key-positions = <14 37>;
+    //   bindings      = <&kp LALT>;
+    //   slow-release;
+    // };
+
+    // combo_left_gui {
+    //   timeout-ms    = <50>;
+    //   key-positions = <13 37>;
+    //   bindings      = <&kp LGUI>;
+    //   slow-release;
+    // };
+
+    // combo_right_shift {
+    //   timeout-ms    = <50>;
+    //   key-positions = <19 40>;
+    //   bindings      = <&kp RSHIFT>;
+    //   slow-release;
+    // };
+
+    // combo_right_ctrl {
+    //   timeout-ms    = <50>;
+    //   key-positions = <18 40>;
+    //   bindings      = <&kp RCTRL>;
+    //   slow-release;
+    // };
+
+    // combo_right_alt {
+    //   timeout-ms    = <50>;
+    //   key-positions = <17 40>;
+    //   bindings      = <&kp RALT>;
+    //   slow-release;
+    // };
+
+    // combo_right_gui {
+    //   timeout-ms    = <50>;
+    //   key-positions = <16 40>;
+    //   bindings      = <&kp RGUI>;
+    //   slow-release;
+    // };
+
   };
 
   keymap {
@@ -145,10 +171,10 @@ colemak_mod_dh_01 {
   //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
-    &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
-    &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-    &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                            &lt NMBRS ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
+    &kp ESC    &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
+    &kp LSHIFT &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
+    &kp CAPS   &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
+                              &lt NMBRS ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
 
