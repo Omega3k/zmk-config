@@ -14,27 +14,19 @@
 #define NMBRS 7
 #define FKEYS 8
 
-// Mod Tap
-
-&mt {
+&mt {                           // Mod Tap
   tapping-term-ms = <250>;
 };
 
-// Layer Tap
-
-&lt {
+&lt {                           // Layer Tap
   tapping-term-ms = <250>;
 };
 
-// Sticky Layer
-
-&sl {
+&sl {                           // Sticky Layer 
   release-after-ms = <2000>;
 };
 
-// Sticky Key
-
-&sk {
+&sk {                           // Sticky Key
   release-after-ms = <2000>;
   // quick-release;
   // /delete-property/ ignore-modifiers;
@@ -88,14 +80,24 @@
       key-positions = <3 4>;
       bindings      = <&mo RGHTL>;
     };
+    combo_left_shift {
+      timeout-ms    = <50>;
+      key-positions = <16 37>;
+      bindings      = <&kp LSHIFT>;
+      slow-release;
+    };
+    combo_right_shift {
+      timeout-ms    = <50>;
+      key-positions = <19 40>;
+      bindings      = <&kp RSHIFT>;
+      slow-release;
+    };
   };
 
   keymap {
     compatible = "zmk,keymap";
 
-// ** Colemak Layers
-
-// *** Colemak Mod DH (with homerow mods)
+// ** Colemak Mod DH (with homerow mods)
 
 colemak_mod_dh_01 {
   // Colemak-mod-DH Keyboard Layout (with homerow mods)
@@ -104,17 +106,17 @@ colemak_mod_dh_01 {
   // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
   // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
   // -------------------------------------     -------------------------------------
-  //                   |NMBRS|LOWER| SPC |     | BSPC| RET |NMBRS|
+  //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
     &kp ESC  &kp Q      &kp W      &kp F       &kp P        &kp B           &kp J       &kp L        &kp U       &kp Y      &kp SEMI   &to CLMK1
     &kp TAB  &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &lt RGHTL G     &lt LEFTL M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp CAPS &kp Z      &kp X      &kp C       &kp D        &kp V           &kp K       &kp H        &kp COMMA   &kp DOT    &kp FSLH   &kp RET
-                                  &lt NMBRS ESC &lt LOWER SPACE &kp TAB     &kp RET &lt RAISE BSPC &kp DEL
+                            &lt NMBRS ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
 
-// *** Colemak Mod DH (without homerow mods)
+// ** Colemak Mod DH (without homerow mods)
 
 colemak_mod_dh_02 {
   // Colemak-mod-DH Keyboard Layout (without homerow mods)
@@ -214,13 +216,13 @@ raise_layer {
   // |     |  [  |  {  |  (  |  _  |     |     |  +  |  -  |  )  |  }  |  ]  |  `  |
   // |     |     |     |     |     |     |     |     |     |     |     |  \  |     |
   // -------------------------------------     -------------------------------------
-  //                   |     |NMBRS| RET |     |     |     |     |
+  //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
     &kp F12 &kp F11  &kp F10  &kp F9   &kp F8    &kp F7     &kp F1 &kp F2    &kp F3   &kp F4   &kp F5   &kp F6   
     &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &kp PLUS &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
     &trans  &trans   &trans   &trans   &trans    &trans     &trans &trans    &trans   &trans   &kp BSLH &trans
-                               &trans &mo NMBRS &kp RET     &trans &trans &trans
+                                   &trans &trans &trans     &trans &trans &trans
     >;
 };
 
