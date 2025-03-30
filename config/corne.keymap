@@ -71,7 +71,7 @@
   };
 
 
-  // ** Combos
+// ** Combos
 
   // -------------------------------------     -------------------------------------
   // |   0 |   1 |   2 |   3 |   4 |   5 |     |   6 |   7 |   8 |   9 |  10 |  11 |
@@ -198,14 +198,14 @@ colemak_mod_dh_01 {
   // -------------------------------------     -------------------------------------
   // | ESC |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
   // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
-  // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  | RET |
+  // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |     |
   // -------------------------------------     -------------------------------------
   //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
     &kp    ESC &kp      Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI &to CLMK1
     &kp LSHIFT &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-    &kp   CAPS &kp      Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &kp   FSLH &kp RET
+    &kp   CAPS &kp      Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &kp   FSLH &trans
                         &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
@@ -284,15 +284,15 @@ right_layer {
     >;
 };
 
-// ** Navigation Layer
+// ** Keyboard Navigation
 
-navigation_layer {
+keyboard_navigation {
   // -------------------------------------     -------------------------------------
   // |     |     |  0  |  9  |  8  |  7  |     |  1  |  2  |  3  |  4  |  5  |  6  |
-  // |     | GUI | ALT | CTRL|SHIFT|     |     | LEFT| DOWN|  UP |RIGHT| HOME|PG_UP|
-  // |     |     |     |     |     |     |     |     |K_APP|     |     | END |PG_DN|
+  // |     | GUI | ALT | CTRL|SHIFT|     |     | CAPS| LEFT| DOWN|  UP |RIGHT|K_APP|
+  // |     |     |     |     |     |     |     |     | HOME|PG_DN|PG_UP| END |     |
   // -------------------------------------     -------------------------------------
-  //                   |     |     |     |     | DEL |RAISE|     |
+  //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
     &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &kp N1   &kp N2    &kp N3 &kp N4    &kp N5   &kp N6
@@ -308,16 +308,16 @@ navigation_layer {
 raise_layer {
   // -------------------------------------     -------------------------------------
   // | F12 | F11 | F10 | F9  | F8  | F7  |     |  F1 |  F2 | F3  | F4  | F5  |  F6 |
-  // |     |  [  |  {  |  (  |  _  |     |     |  +  |  -  |  )  |  }  |  ]  |  `  |
+  // |     |  [  |  {  |  (  |  _  |  =  |     |  +  |  -  |  )  |  }  |  ]  |  `  |
   // |     |     |     |     |     |     |     |     |     |     |     |  \  |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &kp F12 &kp F11  &kp F10  &kp F9   &kp F8    &kp F7     &kp F1 &kp F2    &kp F3   &kp F4   &kp F5   &kp F6   
-    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &trans     &kp PLUS &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
-    &trans  &trans   &trans   &trans   &trans    &trans     &trans &trans    &trans   &trans   &kp BSLH &trans
-                                   &trans &trans &trans     &trans &trans &trans
+    &kp F12 &kp  F11 &kp  F10 &kp   F9 &kp    F8 &kp    F7     &kp   F1 &kp    F2 &kp   F3 &kp   F4 &kp   F5 &kp    F6   
+    &trans  &kp LBKT &kp LBRC &kp LPAR &kp UNDER &kp EQUAL     &kp PLUS &kp MINUS &kp RPAR &kp RBRC &kp RBKT &kp GRAVE
+    &trans  &trans   &trans   &trans   &trans    &trans        &trans   &trans    &trans   &trans   &kp BSLH &trans
+                                   &trans &trans &trans        &trans &trans &trans
     >;
 };
 
@@ -339,7 +339,7 @@ numbers {
     >;
 };
 
-// ** Shifted Numbers Layer
+// ** Shifted Numbers
 
 shifted_numbers {
   // -------------------------------------     -------------------------------------
@@ -357,9 +357,9 @@ shifted_numbers {
     >;
 };
 
-// ** Mouse Layer
+// ** Mouse Navigation
 
-mouse_layer {
+mouse_navigation {
   // -------------------------------------     -------------------------------------
   // |     |     |     |     |     |     |     |     |     |     |     |     |     |
   // |     |     |     |     |     |     |     |     |     |     |     |     |     |
@@ -369,15 +369,15 @@ mouse_layer {
   //                   -------------------     -------------------
   bindings = <
     &trans &trans &trans &trans &trans &trans     &kp K_REDO &kp    K_PASTE &kp     K_COPY &kp    K_CUT &kp      K_UNDO &trans
-    &trans &trans &trans &trans &trans &trans     &trans     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans
+    &trans &trans &trans &trans &trans &trans     &caps_word &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans
     &trans &trans &trans &trans &trans &trans     &trans     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &trans
                          &trans &trans &trans     &mkp MB2 &mkp MB1 &mkp MB3
     >;
 };
 
-// ** Function Keys Layer
+// ** Function Keys
 
-f_keys {
+function_keys {
   // -------------------------------------     -------------------------------------
   // |     |     |     |     |     |     |     |     |  F7 |  F8 |  F9 | F10 |     |
   // |     |     |     |     |     |     |     |     |  F4 |  F5 |  F6 | F11 |     |
