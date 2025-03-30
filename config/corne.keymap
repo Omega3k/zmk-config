@@ -15,6 +15,8 @@
 #define NMBR1 8
 #define MOUSE 9
 #define FKEYS 10
+#define BUTTN 11
+#define BLANK 99
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
@@ -203,10 +205,10 @@ colemak_mod_dh_01 {
   //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
-    &kp    ESC &kp      Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI &to CLMK1
-    &kp LSHIFT &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
-    &kp   CAPS &kp      Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &kp   FSLH &trans
-                        &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
+    &kp    ESC &kp       Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI     &to CLMK1
+    &kp LSHIFT &hm LGUI  A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O     &kp SQT
+    &kp   CAPS &lt BUTTN Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &lt BUTTN FSLH &trans
+                         &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
 
@@ -288,17 +290,16 @@ right_layer {
 
 keyboard_navigation {
   // -------------------------------------     -------------------------------------
-  // |     |     |  0  |  9  |  8  |  7  |     |  1  |  2  |  3  |  4  |  5  |  6  |
+  // |     |     |  0  |  9  |  8  |  7  |     |     |PSCRN| SLCK|PAUSE|     |     |
   // |     | GUI | ALT | CTRL|SHIFT|     |     | CAPS| LEFT| DOWN|  UP |RIGHT|K_APP|
-  // |     |     |     |     |     |     |     |     | HOME|PG_DN|PG_UP| END |     |
+  // |     |     |     |     |     |     |     | INS | HOME|PG_DN|PG_UP| END |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &kp N1   &kp N2    &kp N3 &kp N4    &kp N5   &kp N6
-     // &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp LEFT &kp DOWN  &kp UP &kp RIGHT &kp HOME &kp PG_UP
-    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp CAPS &kp LEFT &kp  DOWN &kp    UP &kp RIGHT &kp K_APP
-    &trans &trans   &trans   &trans    &trans     &trans     &trans   &kp HOME &kp PG_DN &kp PG_UP &kp   END &trans
+    &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &trans     &kp PSCRN &kp  SLCK &kp PAUSE_BREAK &trans &trans
+    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp   CAPS &kp  LEFT &kp  DOWN &kp    UP &kp RIGHT &kp K_APP
+    &trans &trans   &trans   &trans    &trans     &trans     &kp INSERT &kp  HOME &kp PG_DN &kp PG_UP &kp   END &trans
                                     &trans &trans &trans     &trans &trans &trans
     >;
 };
@@ -390,6 +391,24 @@ function_keys {
     &trans &trans &trans &trans &trans &trans     &trans &kp F4 &kp F5 &kp F6 &kp F11 &trans
     &trans &trans &trans &trans &trans &trans     &trans &kp F1 &kp F2 &kp F3 &kp F12 &trans
                          &trans &trans &trans     &trans &trans &trans
+    >;
+};
+
+// ** Button Layer
+
+button_layer {
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // |     |     |     |     |     |     |     |     |     |     |     |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |     |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_REDO     &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &kp K_UNDO &trans
+    &trans &kp   LGUI &kp  LALT &kp  LCTRL &kp  LSHIFT &trans         &trans     &kp  RSHIFT &kp  RCTRL &kp  RALT &kp   RGUI &trans
+    &trans &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_REDO     &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &kp K_UNDO &trans
+                                &mkp   MB3 &mkp    MB1 &mkp   MB2     &mkp   MB2 &mkp    MB1 &mkp   MB3
     >;
 };
 
