@@ -4,11 +4,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
-
-#include <dt-bindings/zmk/pointing.h>
-
 #define CLMK0 0
 #define CLMK1 1
 #define QWRTY 2
@@ -17,8 +12,14 @@
 #define LOWER 5
 #define RAISE 6
 #define NMBRS 7
-#define MOUSE 8
-#define FKEYS 9
+#define NMBR1 8
+#define MOUSE 9
+#define FKEYS 10
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+
+#include <dt-bindings/zmk/pointing.h>
 
 &mt {                           // Mod Tap
   tapping-term-ms = <250>;
@@ -69,8 +70,33 @@
     };
   };
 
+
+  // ** Combos
+
+  // -------------------------------------     -------------------------------------
+  // |   0 |   1 |   2 |   3 |   4 |   5 |     |   6 |   7 |   8 |   9 |  10 |  11 |
+  // |  12 |  13 |  14 |  15 |  16 |  17 |     |  18 |  19 |  20 |  21 |  22 |  23 |
+  // |  24 |  25 |  26 |  27 |  28 |  29 |     |  30 |  31 |  32 |  33 |  34 |  35 |
+  // -------------------------------------     -------------------------------------
+  //                   |  36 |  37 |  38 |     |  39 |  40 |  41 |
+  //                   -------------------     -------------------
+
   combos {
     compatible = "zmk,combos";
+
+    combo_goto_shifted_navigation {
+      timeout-ms    = <50>;
+      key-positions = <16 37>;
+      bindings      = <&mo MOUSE>;
+      // slow-release;
+    };
+
+    // combo_goto_shifted_numbers {
+    //   timeout-ms    = <50>;
+    //   key-positions = <16 38>;
+    //   bindings      = <&mo NMBR1>;
+    //   // slow-release;
+    // };
 
     // combo_left_shift {
     //   timeout-ms    = <50>;
@@ -180,7 +206,7 @@ colemak_mod_dh_01 {
     &kp    ESC &kp      Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI &to CLMK1
     &kp LSHIFT &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O &kp SQT
     &kp   CAPS &kp      Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &kp   FSLH &kp RET
-                        &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS RET     &kp TAB &lt RAISE BSPC &kp DEL
+                        &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
 
@@ -299,16 +325,34 @@ raise_layer {
 numbers {
   // -------------------------------------     -------------------------------------
   // |BTCLR| BT5 | BT4 | BT3 | BT2 | BT1 |     |  +  |  7  |  8  |  9  |  /  |     |
-  // |     |     |     |     |     |     |     |  -  |  4  |  5  |  6  |  .  |  =  |
+  // |     | GUI | ALT | CTRL|SHIFT|     |     |  -  |  4  |  5  |  6  |  .  |  =  |
   // |     |     |     |     |     |     |     |  *  |  1  |  2  |  3  |  ,  |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |  0  |     |
   //                   -------------------     -------------------
   bindings = <
     &bt BT_CLR &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp SLASH &trans
-    &trans &trans &trans &trans &trans &trans                                       &kp MINUS &kp N4 &kp N5 &kp N6 &kp DOT   &kp EQUAL
-    &trans &trans &trans &trans &trans &trans                                       &kp STAR  &kp N1 &kp N2 &kp N3 &kp COMMA &trans
-                         &trans &trans &trans                                       &trans &kp N0 &trans
+    &trans     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHIFT   &trans           &kp MINUS &kp N4 &kp N5 &kp N6 &kp DOT   &kp EQUAL
+    &trans     &trans       &trans       &trans       &trans       &trans           &kp STAR  &kp N1 &kp N2 &kp N3 &kp COMMA &trans
+                                                     &trans &trans &trans           &trans &kp N0 &trans
+    >;
+};
+
+// ** Shifted Numbers Layer
+
+shifted_numbers {
+  // -------------------------------------     -------------------------------------
+  // |     |     |     |     |     |     |     |  +  |  &  |  *  |  (  |     |     |
+  // |     | GUI | ALT | CTRL|SHIFT|     |     |  -  |  $  |  %  |  ^  |     |     |
+  // |     |     |     |     |     |     |     |  *  |  !  |  @  |  #  |     |     |
+  // -------------------------------------     -------------------------------------
+  //                   |     |     |     |     |     |  )  |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &trans   &trans   &trans    &trans     &trans     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp SLASH &trans
+    &trans &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &trans     &kp MINUS &kp N4 &kp N5 &kp N6 &kp DOT   &kp EQUAL
+    &trans &trans   &trans   &trans    &trans     &trans     &kp STAR  &kp N1 &kp N2 &kp N3 &kp COMMA &trans
+                                    &trans &trans &trans     &trans &kp N0 &trans
     >;
 };
 
@@ -323,9 +367,9 @@ mouse_layer {
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans &trans &trans &trans &trans     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &trans &trans
-    &trans &trans &trans &trans &trans &trans     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans &trans
-    &trans &trans &trans &trans &trans &trans     &trans         &trans         &trans       &trans          &trans &trans
+    &trans &trans &trans &trans &trans &trans     &kp K_REDO &kp    K_PASTE &kp     K_COPY &kp    K_CUT &kp      K_UNDO &trans
+    &trans &trans &trans &trans &trans &trans     &trans     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans
+    &trans &trans &trans &trans &trans &trans     &trans     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &trans
                          &trans &trans &trans     &mkp MB2 &mkp MB1 &mkp MB3
     >;
 };
