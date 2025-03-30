@@ -88,7 +88,7 @@
       timeout-ms    = <50>;
       key-positions = <16 37>;
       bindings      = <&mo MOUSE>;
-      // slow-release;
+      slow-release;
     };
 
     // combo_goto_shifted_numbers {
@@ -284,9 +284,9 @@ right_layer {
     >;
 };
 
-// ** Lower Layer
+// ** Navigation Layer
 
-lower_layer {
+navigation_layer {
   // -------------------------------------     -------------------------------------
   // |     |     |  0  |  9  |  8  |  7  |     |  1  |  2  |  3  |  4  |  5  |  6  |
   // |     | GUI | ALT | CTRL|SHIFT|     |     | LEFT| DOWN|  UP |RIGHT| HOME|PG_UP|
@@ -296,9 +296,10 @@ lower_layer {
   //                   -------------------     -------------------
   bindings = <
     &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &kp N1   &kp N2    &kp N3 &kp N4    &kp N5   &kp N6
-    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp LEFT &kp DOWN  &kp UP &kp RIGHT &kp HOME &kp PG_UP
-    &trans &trans   &trans   &trans    &trans     &trans     &trans   &kp K_APP &trans &trans    &kp END  &kp PG_DN
-                                    &trans &trans &trans     &kp DEL &sl RAISE &trans
+     // &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp LEFT &kp DOWN  &kp UP &kp RIGHT &kp HOME &kp PG_UP
+    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp CAPS &kp LEFT &kp  DOWN &kp    UP &kp RIGHT &kp K_APP
+    &trans &trans   &trans   &trans    &trans     &trans     &trans   &kp HOME &kp PG_DN &kp PG_UP &kp   END &trans
+                                    &trans &trans &trans     &trans &trans &trans
     >;
 };
 
