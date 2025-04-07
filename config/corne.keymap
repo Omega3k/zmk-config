@@ -199,15 +199,15 @@ colemak_mod_dh_01 {
   // Colemak-mod-DH Keyboard Layout (with homerow mods)
   // -------------------------------------     -------------------------------------
   // | ALT |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
-  // |SHIFT|  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
-  // | CTRL|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |     |
+  // | CTRL|  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
+  // |SHIFT|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |     |
   // -------------------------------------     -------------------------------------
   //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
     &kp   LALT &kp       Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI     &to CLMK1
-    &kp LSHIFT &hm LGUI  A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O     &kp SQT
-    &kp  LCTRL &lt BUTTN Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &lt BUTTN FSLH &trans
+    &kp  LCTRL &hm LGUI  A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O     &kp SQT
+    &kp LSHIFT &lt BUTTN Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &lt BUTTN FSLH &trans
                          &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
