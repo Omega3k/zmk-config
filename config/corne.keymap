@@ -198,16 +198,16 @@
 colemak_mod_dh_01 {
   // Colemak-mod-DH Keyboard Layout (with homerow mods)
   // -------------------------------------     -------------------------------------
-  // | ESC |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
-  // | TAB |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
-  // | CAPS|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |     |
+  // | ALT |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  ;  |CMLK1|
+  // |SHIFT|  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |  '  |
+  // | CTRL|  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |     |
   // -------------------------------------     -------------------------------------
   //                   | ESC | SPC | TAB |     | RET | BSPC| DEL |
   //                   -------------------     -------------------
   bindings = <
-    &kp    ESC &kp       Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI     &to CLMK1
+    &kp   LALT &kp       Q &kp      W &kp       F &kp        P &kp B     &kp J &kp        L &kp       U &kp      Y &kp   SEMI     &to CLMK1
     &kp LSHIFT &hm LGUI  A &hm LALT R &hm LCTRL S &hm LSHIFT T &kp G     &kp M &hm RSHIFT N &hm RCTRL E &hm RALT I &hm RGUI O     &kp SQT
-    &kp   CAPS &lt BUTTN Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &lt BUTTN FSLH &trans
+    &kp  LCTRL &lt BUTTN Z &kp      X &kp       C &kp        D &kp V     &kp K &kp        H &kp   COMMA &kp    DOT &lt BUTTN FSLH &trans
                          &lt MOUSE ESC &lt LOWER SPACE &lt NMBRS TAB     &kp RET &lt RAISE BSPC &kp DEL
     >;
 };
@@ -290,16 +290,16 @@ right_layer {
 
 keyboard_navigation {
   // -------------------------------------     -------------------------------------
-  // |     |     |  0  |  9  |  8  |  7  |     |     |PSCRN| SLCK|PAUSE|     |     |
+  // |     |     |     |     |     |     |     | INS |PSCRN| SLCK|PAUSE|     |     |
   // |     | GUI | ALT | CTRL|SHIFT|     |     | CAPS| LEFT| DOWN|  UP |RIGHT|K_APP|
-  // |     |     |     |     |     |     |     | INS | HOME|PG_DN|PG_UP| END |     |
+  // |     |     |     |     |     |     |     |     | HOME|PG_DN|PG_UP| END |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &trans   &kp N0   &kp N9    &kp N8     &kp N7     &trans     &kp PSCRN &kp  SLCK &kp PAUSE_BREAK &trans &trans
-    &trans &sk LGUI &sk LALT &sk LCTRL &sk LSHIFT &trans     &kp   CAPS &kp  LEFT &kp  DOWN &kp    UP &kp RIGHT &kp K_APP
-    &trans &trans   &trans   &trans    &trans     &trans     &kp INSERT &kp  HOME &kp PG_DN &kp PG_UP &kp   END &trans
+    &trans &trans   &trans   &trans    &trans     &trans     &kp INSERT &kp PSCRN &kp  SLCK &kp PAUSE_BREAK &trans    &trans
+    &trans &kp LGUI &kp LALT &kp LCTRL &kp LSHIFT &trans     &kp   CAPS &kp  LEFT &kp  DOWN &kp         UP  &kp RIGHT &kp K_APP
+    &trans &trans   &trans   &trans    &trans     &trans     &trans     &kp  HOME &kp PG_DN &kp      PG_UP  &kp   END &trans
                                     &trans &trans &trans     &trans &trans &trans
     >;
 };
