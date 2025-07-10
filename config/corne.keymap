@@ -7,15 +7,16 @@
 #define CLMK0 0
 #define CLMK1 1
 #define QWRTY 2
-#define LEFTL 3
-#define RGHTL 4
-#define LOWER 5
-#define RAISE 6
-#define NMBRS 7
-#define NMBR1 8
-#define MOUSE 9
-#define FKEYS 10
-#define BUTTN 11
+#define STENO 3
+#define LEFTL 4
+#define RGHTL 5
+#define LOWER 6
+#define RAISE 7
+#define NMBRS 8
+#define NMBR1 9
+#define MOUSE 10
+#define FKEYS 11
+#define BUTTN 12
 #define BLANK 99
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
@@ -236,17 +237,36 @@ colemak_mod_dh_02 {
 qwerty {
   // QWERTY Keybord Layout
   // -------------------------------------     -------------------------------------
-  // |     |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |CLMK0|
+  // |     |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |STENO|
   // |     |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |     |
   // |     |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |     |
   // -------------------------------------     -------------------------------------
   //                   |     |     |     |     |     |     |     |
   //                   -------------------     -------------------
   bindings = <
-    &trans &kp      Q &kp      W &kp       E &kp        R &kp T     &kp Y &kp     U    &kp       I &kp      O &kp         P &to CLMK0
+    &trans &kp      Q &kp      W &kp       E &kp        R &kp T     &kp Y &kp     U    &kp       I &kp      O &kp         P &to STENO
     &trans &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHIFT F &kp G     &kp H &hm RSHIFT J &hm RCTRL K &hm RALT L &hm RGUI SEMI &trans
     &trans &kp      Z &kp      X &kp       C &kp        V &kp B     &kp N &kp        M &kp   COMMA &kp    DOT &kp      FSLH &trans
                                            &trans &trans &trans     &trans &trans &trans
+    >;
+};
+
+// ** Stenography Layer
+
+stenography_layer {
+  // Stenography Keybord Layout
+  // -------------------------------------     -------------------------------------
+  // |     |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |  [  |
+  // |     |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |  '  |
+  // |     |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |     |
+  // -------------------------------------     -------------------------------------
+  //                   |CLMK0|  C  |  V  |     |  N  |  M  |     |
+  //                   -------------------     -------------------
+  bindings = <
+    &trans &kp Q &kp W &kp E &kp R &kp T     &kp Y &kp U &kp     I &kp   O &kp    P &kp LBKT
+    &trans &kp A &kp S &kp D &kp F &kp G     &kp H &kp J &kp     K &kp   L &kp SEMI &kp SQT
+    &trans &kp Z &kp X &kp C &kp V &kp B     &kp N &kp M &kp COMMA &kp DOT &kp FSLH &trans
+                   &tO CLMK0 &kp C &kp V     &kp N &kp M &trans
     >;
 };
 
